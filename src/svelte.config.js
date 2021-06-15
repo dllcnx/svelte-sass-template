@@ -5,7 +5,7 @@ module.exports = {
       includePaths: ['src'],
     },
     postcss: {
-      plugins: [],
+      plugins: [require('autoprefixer')],
     },
   }),
 };

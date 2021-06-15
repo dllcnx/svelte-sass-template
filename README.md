@@ -21,9 +21,9 @@ npm run dev & open http://localhost:5000
 ### 1. 安装依赖模块
 
 ```
-npm i -D svelte-preprocess node-sass
+npm i -D svelte-preprocess node-sass autoprefixer sass
 ```
-
+`注意`：sass升级到1.32.12以上后，启动时显示大量弃用警告，如有影响，建议使用sass@1.32.12版本。
 ### 2. 修改配置文件
 
 
@@ -38,7 +38,7 @@ const preprocess = sveltePreprocess({
     includePaths: ['src'],
   },
   postcss: {
-    plugins: [],
+    plugins: [require('autoprefixer')],
   },
 });
 
@@ -50,6 +50,41 @@ export default {
       preprocess: preprocess,
    // ...
     })
+  ]
+}
+```
+
+
+```js
+// webpack.config.js
+import sveltePreprocess from 'svelte-preprocess';
+
+// ...
+const preprocess = sveltePreprocess({
+  scss: {
+    includePaths: ['src'],
+  },
+  postcss: {
+    plugins: [require('autoprefixer')],
+  },
+});
+
+module.export = {
+  // ... 
+  module: {
+    rules: [
+      {
+        test: /.(svelte|html)$/,
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            preprocess, 
+            // ...
+          }
+        }
+      },
+    ]
+  },
   ]
 }
 ```
@@ -112,3 +147,6 @@ module.exports = {
   }),
 };
 ```
+
+### 组件库
+[svelma](https://github.com/KeiferJu/svelma-pro)

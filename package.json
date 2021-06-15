@@ -9,6 +9,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "autoprefixer": "^9.6.0",
     "node-sass": "^4.14.1",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
@@ -16,6 +17,7 @@
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
+    "sass": "^1.32.12",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^4.3.0"
   },
